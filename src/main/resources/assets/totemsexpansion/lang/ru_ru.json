@@ -1,0 +1,12 @@
+{
+  "item.totemsexpansion.tornado_totem": "Тотем Торнадо",
+  "item.totemsexpansion.tornado_totem.desc": "При смертельном ударе: подбрасывает врагов поблизости высоко в небо и даёт игроку плавное падение.",
+
+  "item.totemsexpansion.fire_totem": "Огненный Тотем",
+  "item.totemsexpansion.fire_totem.desc": "При смертельном ударе: наносит 5 урона врагам поблизости, поджигает их на 3 секунды и даёт огнестойкость.",
+
+  "item.totemsexpansion.cripper_totem": "Криппер-Тотем",
+  "item.totemsexpansion.cripper_totem.desc": "При смертельном ударе: огромный взрыв, наносящий большой урон врагам. Сам игрок неуязвим.",
+
+  "itemGroup.totemsexpansion.main": "Totems Expansion"
+}

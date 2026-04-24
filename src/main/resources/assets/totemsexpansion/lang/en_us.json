@@ -1,0 +1,12 @@
+{
+  "item.totemsexpansion.tornado_totem": "Tornado Totem",
+  "item.totemsexpansion.tornado_totem.desc": "On lethal hit: launches nearby enemies high into the sky and grants Slow Falling.",
+
+  "item.totemsexpansion.fire_totem": "Fire Totem",
+  "item.totemsexpansion.fire_totem.desc": "On lethal hit: deals 5 damage to nearby enemies, ignites them for 3 seconds, grants Fire Resistance.",
+
+  "item.totemsexpansion.cripper_totem": "Cripper Totem",
+  "item.totemsexpansion.cripper_totem.desc": "On lethal hit: detonates a huge blast dealing massive damage to enemies. The user is immune.",
+
+  "itemGroup.totemsexpansion.main": "Totems Expansion"
+}

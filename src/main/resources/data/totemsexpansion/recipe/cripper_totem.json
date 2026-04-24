@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "totemsexpansion_totems",
+  "ingredients": [
+    "minecraft:totem_of_undying",
+    "minecraft:tnt"
+  ],
+  "result": {
+    "id": "totemsexpansion:cripper_totem",
+    "count": 1
+  }
+}

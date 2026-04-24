@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "totemsexpansion",
+  "version": "${version}",
+  "name": "Totems Expansion",
+  "description": "Adds three new totems: Tornado, Fire, and Cripper.",
+  "authors": ["Satipos"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.totemsexpansion.TotemsExpansionMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.2",
+    "fabric-api": "*",
+    "minecraft": ">=26.1.2",
+    "java": ">=25"
+  }
+}
