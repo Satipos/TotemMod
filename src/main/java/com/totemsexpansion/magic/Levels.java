@@ -1,43 +1,37 @@
 package com.totemsexpansion.magic;
 
 /**
- * Level curve exactly as the design doc specified:
- * <pre>
- * Level 1:      100 XP
- * Level 2:      300 XP
- * Level 3:      900 XP
- * Level 4:    2,700 XP
- *   ... each level costs 3× the previous ...
- * </pre>
+ * Level curve (rebalanced in v1.5.1 for reachability).
  *
- * <p>The cost to go from level {@code N-1} to level {@code N} is {@code 100 * 3^(N-1)}
- * (so the first advancement, 0→1, costs 100 XP).</p>
+ * <p>Cost to advance from level {@code N} to {@code N+1}: {@code 100 + 30·N}.</p>
  *
- * <p>With this curve the cumulative XP to reach a given level is
- * {@code 100 * (3^N - 1) / 2} which blows up quickly — level 25 would require
- * ≈ 4.2×10¹³ XP. Kept as-is per the design spec; the UI surfaces the raw XP
- * numbers so the player can see the curve and understand the challenge.</p>
+ * <p>Cumulative XP: {@code 100·L + 30·L·(L-1)/2}. Level 25 → ~11,500 XP
+ * (≈ 1,150 zombies). Level 50 → ~41,750 XP. Level 100 → ~158,500 XP.</p>
  *
- * <p>We cap the max level at {@value #MAX_LEVEL} to avoid {@code long} overflow
- * on multiplication.</p>
+ * <p>The original ×3 exponential curve grew to ~4.2×10¹³ XP by level 25, which
+ * was effectively unreachable; the new linear growth still feels progressive
+ * but rewards normal mob grinding.</p>
  */
 public final class Levels {
     /** Ability slot index thresholds. Slot 0 is free, slot 1 unlocks at 25, ultimate at 50. */
     public static final int UNLOCK_ABILITY_2 = 25;
     public static final int UNLOCK_ULTIMATE  = 50;
 
-    /** 3^39 * 100 still fits in a signed long, 3^40 does not. We cap below that. */
-    public static final int MAX_LEVEL = 39;
+    /** Soft cap; well within long bounds for both per-level and cumulative costs. */
+    public static final int MAX_LEVEL = 100;
+
+    /** Base cost for the 0→1 step. */
+    private static final long BASE_COST = 100L;
+    /** Additive growth per level. */
+    private static final long STEP_GROWTH = 30L;
 
     private Levels() {}
 
     /** Cost (in XP) to advance from level {@code fromLevel} to {@code fromLevel + 1}. */
     public static long costToLevel(int fromLevel) {
-        if (fromLevel < 0) return 100L;
+        if (fromLevel < 0) return BASE_COST;
         if (fromLevel >= MAX_LEVEL) return Long.MAX_VALUE;
-        long cost = 100L;
-        for (int i = 0; i < fromLevel; i++) cost *= 3L;
-        return cost;
+        return BASE_COST + STEP_GROWTH * fromLevel;
     }
 
     /** Total XP needed to reach exactly level {@code level} (sum of all level costs). */
