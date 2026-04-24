@@ -10,6 +10,9 @@
   "entrypoints": {
     "main": [
       "com.totemsexpansion.TotemsExpansionMod"
+    ],
+    "client": [
+      "com.totemsexpansion.client.TotemsExpansionClient"
     ]
   },
   "depends": {

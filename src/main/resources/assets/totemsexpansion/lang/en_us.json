@@ -8,5 +8,46 @@
   "item.totemsexpansion.cripper_totem": "Cripper Totem",
   "item.totemsexpansion.cripper_totem.desc": "On lethal hit: detonates a huge blast dealing massive damage to enemies. The user is immune.",
 
-  "itemGroup.totemsexpansion.main": "Totems Expansion"
+  "item.totemsexpansion.magic_totem": "Magic Totem",
+  "item.totemsexpansion.magic_totem.desc": "Use to pick one of three magic schools, then open your spellbook. Gain XP by slaying mobs.",
+
+  "itemGroup.totemsexpansion.main": "Totems Expansion",
+
+  "key.categories.totemsexpansion.magic": "Totems Expansion — Magic",
+  "key.totemsexpansion.ability_1": "Magic — Ability 1",
+  "key.totemsexpansion.ability_2": "Magic — Ability 2",
+  "key.totemsexpansion.ultimate":  "Magic — Ultimate",
+
+  "totemsexpansion.school.air":   "Air",
+  "totemsexpansion.school.earth": "Earth",
+  "totemsexpansion.school.fire":  "Fire",
+
+  "totemsexpansion.school.air.tagline":   "Winds and lightning. Mobility. Control.",
+  "totemsexpansion.school.earth.tagline": "Stone and quakes. Brute force. Crowd control.",
+  "totemsexpansion.school.fire.tagline":  "Fireballs and meteors. Burn everything.",
+
+  "totemsexpansion.ability.air.0": "Wind Gust",
+  "totemsexpansion.ability.air.1": "Sky Strike",
+  "totemsexpansion.ability.air.2": "Tempest Eye",
+  "totemsexpansion.ability.earth.0": "Rock Burst",
+  "totemsexpansion.ability.earth.1": "Stone Spike",
+  "totemsexpansion.ability.earth.2": "Earthquake",
+  "totemsexpansion.ability.fire.0":  "Fireball",
+  "totemsexpansion.ability.fire.1":  "Flame Breath",
+  "totemsexpansion.ability.fire.2":  "Meteor",
+
+  "totemsexpansion.ui.select_title":   "Choose Your School",
+  "totemsexpansion.ui.select_subtitle": "This choice is permanent.",
+  "totemsexpansion.ui.pick":           "Pick",
+  "totemsexpansion.ui.spellbook_title": "Spellbook",
+  "totemsexpansion.ui.level":          "Level",
+  "totemsexpansion.ui.xp":             "XP",
+  "totemsexpansion.ui.xp_progress":    "%,d / %,d",
+  "totemsexpansion.ui.locked_at":      "Unlocks at level %d",
+  "totemsexpansion.ui.unlocked":       "Unlocked",
+  "totemsexpansion.ui.cooldown":       "Cooldown: %.1fs",
+  "totemsexpansion.ui.maxed":          "Max level",
+  "totemsexpansion.ui.close":          "Close",
+  "totemsexpansion.ui.level_up":       "Level up! You are now level %d",
+  "totemsexpansion.ui.bind_hint":      "Z / X / C to cast"
 }

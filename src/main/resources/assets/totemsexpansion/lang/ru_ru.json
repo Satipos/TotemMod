@@ -8,5 +8,46 @@
   "item.totemsexpansion.cripper_totem": "Криппер-Тотем",
   "item.totemsexpansion.cripper_totem.desc": "При смертельном ударе: огромный взрыв, наносящий большой урон врагам. Сам игрок неуязвим.",
 
-  "itemGroup.totemsexpansion.main": "Totems Expansion"
+  "item.totemsexpansion.magic_totem": "Магический Тотем",
+  "item.totemsexpansion.magic_totem.desc": "Правый клик: выбор школы магии (навсегда) или открытие книги заклинаний. XP капает с убитых мобов.",
+
+  "itemGroup.totemsexpansion.main": "Totems Expansion",
+
+  "key.categories.totemsexpansion.magic": "Totems Expansion — Магия",
+  "key.totemsexpansion.ability_1": "Магия — Способность 1",
+  "key.totemsexpansion.ability_2": "Магия — Способность 2",
+  "key.totemsexpansion.ultimate":  "Магия — Ультимейт",
+
+  "totemsexpansion.school.air":   "Воздух",
+  "totemsexpansion.school.earth": "Земля",
+  "totemsexpansion.school.fire":  "Огонь",
+
+  "totemsexpansion.school.air.tagline":   "Ветер и молнии. Мобильность. Контроль.",
+  "totemsexpansion.school.earth.tagline": "Камень и землетрясения. Грубая сила. Контроль толпы.",
+  "totemsexpansion.school.fire.tagline":  "Фаерболы и метеоры. Сожги всё.",
+
+  "totemsexpansion.ability.air.0": "Порыв ветра",
+  "totemsexpansion.ability.air.1": "Небесный удар",
+  "totemsexpansion.ability.air.2": "Око бури",
+  "totemsexpansion.ability.earth.0": "Каменный взрыв",
+  "totemsexpansion.ability.earth.1": "Каменный шип",
+  "totemsexpansion.ability.earth.2": "Землетрясение",
+  "totemsexpansion.ability.fire.0":  "Фаербол",
+  "totemsexpansion.ability.fire.1":  "Огненное дыхание",
+  "totemsexpansion.ability.fire.2":  "Метеорит",
+
+  "totemsexpansion.ui.select_title":   "Выбор школы магии",
+  "totemsexpansion.ui.select_subtitle": "Выбор навсегда.",
+  "totemsexpansion.ui.pick":           "Выбрать",
+  "totemsexpansion.ui.spellbook_title": "Книга заклинаний",
+  "totemsexpansion.ui.level":          "Уровень",
+  "totemsexpansion.ui.xp":             "Опыт",
+  "totemsexpansion.ui.xp_progress":    "%,d / %,d",
+  "totemsexpansion.ui.locked_at":      "Откроется на %d уровне",
+  "totemsexpansion.ui.unlocked":       "Открыто",
+  "totemsexpansion.ui.cooldown":       "Перезарядка: %.1fс",
+  "totemsexpansion.ui.maxed":          "Макс. уровень",
+  "totemsexpansion.ui.close":          "Закрыть",
+  "totemsexpansion.ui.level_up":       "Уровень повышен! Теперь уровень %d",
+  "totemsexpansion.ui.bind_hint":      "Z / X / C — способности"
 }

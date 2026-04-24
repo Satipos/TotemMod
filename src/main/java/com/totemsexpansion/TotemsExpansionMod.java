@@ -4,6 +4,10 @@ import com.totemsexpansion.item.CripperTotemItem;
 import com.totemsexpansion.item.FireTotemItem;
 import com.totemsexpansion.item.ModCreativeTab;
 import com.totemsexpansion.item.TornadoTotemItem;
+import com.totemsexpansion.magic.MagicNetwork;
+import com.totemsexpansion.magic.MagicServerReceivers;
+import com.totemsexpansion.magic.MagicTotemItem;
+import com.totemsexpansion.magic.MagicXpTracker;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.minecraft.server.level.ServerLevel;
@@ -31,7 +35,12 @@ public class TotemsExpansionMod implements ModInitializer {
         TornadoTotemItem.register();
         FireTotemItem.register();
         CripperTotemItem.register();
+        MagicTotemItem.register();
         ModCreativeTab.register();
+
+        MagicNetwork.registerCommon();
+        MagicServerReceivers.register();
+        MagicXpTracker.register();
 
         // Hook: intercept fatal damage on a player. If they're holding one of our
         // totems in either hand, save them and trigger the totem's effect.

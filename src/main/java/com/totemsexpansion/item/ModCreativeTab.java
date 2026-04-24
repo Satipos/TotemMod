@@ -34,15 +34,17 @@ public final class ModCreativeTab {
                         .withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD))
                 .icon(() -> new ItemStack(TornadoTotemItem.INSTANCE))
                 .displayItems((params, output) -> {
-                    // Three custom totems (ordered from defensive → offensive).
+                    // Four custom totems (ordered from defensive → offensive → magic).
                     output.accept(new ItemStack(TornadoTotemItem.INSTANCE));
                     output.accept(new ItemStack(FireTotemItem.INSTANCE));
                     output.accept(new ItemStack(CripperTotemItem.INSTANCE));
+                    output.accept(new ItemStack(com.totemsexpansion.magic.MagicTotemItem.INSTANCE));
                     // A little crafting reference so players know the ingredients at a glance.
                     output.accept(new ItemStack(Items.TOTEM_OF_UNDYING));
                     output.accept(new ItemStack(Items.WIND_CHARGE));
                     output.accept(new ItemStack(Items.BLAZE_POWDER));
                     output.accept(new ItemStack(Items.TNT));
+                    output.accept(new ItemStack(Items.ECHO_SHARD));
                 })
                 .build();
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, TAB_KEY, tab);
