@@ -2,6 +2,8 @@ package com.totemsexpansion.magic;
 
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 
 /**
  * Wires up server-side handling for Magic-related C2S packets plus the initial
@@ -26,20 +28,42 @@ public final class MagicServerReceivers {
 
         ServerPlayNetworking.registerGlobalReceiver(MagicNetwork.CastAbilityPayload.TYPE,
                 (payload, ctx) -> ctx.server().execute(() -> {
+                    var player = ctx.player();
                     MagicPlayerData data = MagicPlayerData.of(ctx.server());
-                    MagicPlayerData.Entry entry = data.get(ctx.player().getUUID());
-                    if (entry.school().isEmpty()) return;
-                    if (!Levels.canUseAbility(entry.level(), payload.slot())) return;
+                    MagicPlayerData.Entry entry = data.get(player.getUUID());
+                    if (entry.school().isEmpty()) {
+                        player.sendOverlayMessage(Component.literal("✦ Выбери школу магии сначала")
+                                .withStyle(ChatFormatting.LIGHT_PURPLE));
+                        return;
+                    }
+                    if (!Levels.canUseAbility(entry.level(), payload.slot())) {
+                        int need = Levels.unlockLevel(payload.slot());
+                        player.sendOverlayMessage(Component.literal("🔒 Нужен уровень " + need
+                                        + " (сейчас " + entry.level() + ")")
+                                .withStyle(ChatFormatting.RED));
+                        return;
+                    }
                     // Require having a magic totem in the inventory.
                     boolean hasTotem = false;
-                    for (int i = 0; i < ctx.player().getInventory().getContainerSize(); i++) {
-                        if (ctx.player().getInventory().getItem(i).getItem() == MagicTotemItem.INSTANCE) {
+                    for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
+                        if (player.getInventory().getItem(i).getItem() == MagicTotemItem.INSTANCE) {
                             hasTotem = true;
                             break;
                         }
                     }
-                    if (!hasTotem) return;
-                    Abilities.cast(ctx.player(), entry.school().get(), payload.slot());
+                    if (!hasTotem) {
+                        player.sendOverlayMessage(Component.literal("✦ Нет Magic Totem в инвентаре")
+                                .withStyle(ChatFormatting.GRAY));
+                        return;
+                    }
+                    int remaining = Abilities.remainingCooldown(player, payload.slot());
+                    if (remaining > 0) {
+                        float sec = remaining / 20.0f;
+                        player.sendOverlayMessage(Component.literal(String.format("⏳ Откат %.1fs", sec))
+                                .withStyle(ChatFormatting.YELLOW));
+                        return;
+                    }
+                    Abilities.cast(player, entry.school().get(), payload.slot());
                 }));
 
         // Initial sync when player joins.
