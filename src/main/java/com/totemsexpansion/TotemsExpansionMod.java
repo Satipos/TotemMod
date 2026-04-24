@@ -4,6 +4,7 @@ import com.totemsexpansion.item.CripperTotemItem;
 import com.totemsexpansion.item.FireTotemItem;
 import com.totemsexpansion.item.ModCreativeTab;
 import com.totemsexpansion.item.TornadoTotemItem;
+import com.totemsexpansion.magic.MagicCommands;
 import com.totemsexpansion.magic.MagicNetwork;
 import com.totemsexpansion.magic.MagicServerReceivers;
 import com.totemsexpansion.magic.MagicTotemItem;
@@ -41,6 +42,7 @@ public class TotemsExpansionMod implements ModInitializer {
         MagicNetwork.registerCommon();
         MagicServerReceivers.register();
         MagicXpTracker.register();
+        MagicCommands.register();
 
         // Hook: intercept fatal damage on a player. If they're holding one of our
         // totems in either hand, save them and trigger the totem's effect.

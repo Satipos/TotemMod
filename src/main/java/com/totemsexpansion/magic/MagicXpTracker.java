@@ -2,6 +2,8 @@ package com.totemsexpansion.magic;
 
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,7 +26,16 @@ public final class MagicXpTracker {
     private static void onDeath(LivingEntity victim, net.minecraft.world.damagesource.DamageSource source) {
         if (victim instanceof Player) return; // don't award XP for player deaths
         if (!(victim.level() instanceof ServerLevel sl)) return;
-        if (!(source.getEntity() instanceof ServerPlayer killer)) return;
+        // Resolve killer through both direct attacker and projectile owner.
+        ServerPlayer killer = null;
+        if (source.getEntity() instanceof ServerPlayer sp) {
+            killer = sp;
+        } else if (source.getDirectEntity() != null
+                && source.getDirectEntity() instanceof net.minecraft.world.entity.projectile.Projectile proj
+                && proj.getOwner() instanceof ServerPlayer owner) {
+            killer = owner;
+        }
+        if (killer == null) return;
         long xp = (long) Math.max(1, Math.floor(victim.getMaxHealth() * 0.5));
         MagicPlayerData data = MagicPlayerData.of(sl.getServer());
         MagicPlayerData.Entry before = data.get(killer.getUUID());
@@ -39,5 +50,10 @@ public final class MagicXpTracker {
         if (afterLevel > beforeLevel) {
             ServerPlayNetworking.send(killer, new MagicNetwork.LevelUpPayload(afterLevel));
         }
+        // Nudge the player with an action-bar ping so the XP gain is visible even
+        // before they've picked a school / put the totem in hand.
+        killer.sendOverlayMessage(Component.literal("+" + xp + " XP ")
+                .withStyle(ChatFormatting.LIGHT_PURPLE, ChatFormatting.BOLD)
+                .append(Component.literal("(lvl " + afterLevel + ")").withStyle(ChatFormatting.GRAY)));
     }
 }
